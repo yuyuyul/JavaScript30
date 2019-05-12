@@ -54,7 +54,22 @@
   </div>
 
 <script>
-
+  const nav = document.querySelector("#main");
+  const body = document.querySelector("body");
+  const header = document.querySelector("header");
+  const navPosTop = nav.offsetTop;
+  function fixNav() {
+    if(window.scrollY >=  navPosTop) {
+      header.style.paddingBottom = `${navPosTop}px`;
+      if(body.classList.contains("fixed-nav")) return;
+      body.classList.add("fixed-nav");
+    } else {
+      header.style.paddingBottom = 0;
+      if(!body.classList.contains("fixed-nav")) return;
+      body.classList.remove("fixed-nav");
+    }
+  }
+  window.addEventListener('scroll', fixNav);
 </script>
 
 </body>
